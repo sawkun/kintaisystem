@@ -11,6 +11,13 @@ module SessionsHelper
     cookies.permanent[:remember_token] = user.remember_token
   end
   
+  # 永続的なセッションを破棄します
+  def forget(user)
+    user.forget
+    cookies.delete(:user_id)
+    cookies.delete(:remember_token)
+  end
+  
   def log_out
     session.delete(:user_id)
     @current_user = nil
