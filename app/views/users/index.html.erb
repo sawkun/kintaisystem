@@ -1,4 +1,4 @@
-<% provide(:title, "All Users") %>
+<% provide(:title, 'All Users') %>
 <h1>ユーザー一覧</h1>
 
 <div class="col-md-10 col-md-offset-1">
@@ -15,7 +15,7 @@
         <th></th>
       </tr>
     </thead>
-    
+
     <% @users.each do |user| %>
       <tr>
         <td>
@@ -30,12 +30,11 @@
           <td class="center"><%= format_basic_info(user.basic_time) %></td>
           <td class="center"><%= format_basic_info(user.work_time) %></td>
         <% end %>
-        <td>
+        <td class="center">
           <% if current_user.admin? && !current_user?(user) %>
             <%= link_to "基本情報編集", edit_basic_info_user_path(user), remote: true, class: "btn btn-success" %>
             <%= link_to "削除", user, method: :delete,
-                data: { confirm: "削除してよろしいですか？" },
-                class: "btn btn-danger" %>
+                data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
           <% end %>
         </td>
       </tr>
